@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Login" %}{% endblock %}
+
+{% block content %}
+<h1>{% trans "Login" %}</h1>
+<form method="post" action="{% url 'login' %}">
+  {% csrf_token %}
+  {% if form.errors %}
+  <div class="container alert alert-danger">
+    {% trans "Your username and password didn't match. Please try again." %}
+  </div>
+  {% endif %}
+
+  <div class="form-group">
+    <label for="id_username">{{ form.username.label }}</label>
+    {{ form.username }}
+  </div>
+
+  <div class="form-group">
+    <label for="id_password">{{ form.password.label }}</label>
+    {{ form.password }}
+  </div>
+
+  <button type="submit" class="btn btn-outline-primary">{% trans "Login" %}</button>
+  <input type="hidden" name="next" value="{{ next }}">
+</form>
+{% endblock %}

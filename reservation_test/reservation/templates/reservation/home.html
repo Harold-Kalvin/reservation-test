@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}Reservation test{% endblock %}
+
+{% block content %}
+<h1>{% trans "All reservations" %}</h1>
+<div class="row">
+  <div class="col">
+    <!-- past reservations -->
+    <div class="row mb-3">
+      <div class="col">
+        <div class="card">
+          <div class="card-header font-weight-bold">
+              {% trans "Past reservations" %}
+          </div>
+          <ul class="list-group list-group-flush">
+            {% if past_reservations %}
+            {% for past_reservation in past_reservations %}
+            <li class="list-group-item">
+              <span class="font-weight-bold">{% trans "Resource" %}: </span>{{ past_reservation.resource.name }}<br>
+              <span class="font-weight-bold">{% trans "Owner" %}: </span>{{ past_reservation.owner }}<br>
+              <span class="font-weight-bold">{% trans "From" %}: </span>{{ past_reservation.from_date_time }}<br>
+              <span class="font-weight-bold">{% trans "To" %}: </span>{{ past_reservation.to_date_time }}<br>
+            </li>
+            {% endfor %}
+            {% else %}
+            <li class="list-group-item d-flex justify-content-center align-items-center">
+                {% trans "No past reservations." %}
+            </li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- current reservations -->
+    <div class="row mb-3">
+      <div class="col">
+        <div class="card">
+          <div class="card-header font-weight-bold">
+            {% trans "Current reservations" %}
+          </div>
+          <ul id="current-reservations-list" class="list-group list-group-flush">
+            {% include "Reservation/sub_templates/current_reservation_items.html" %}
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- coming reservations -->
+    <div class="row mb-3">
+      <div class="col">
+        <div class="card">
+          <div class="card-header font-weight-bold">
+            {% trans "Coming reservations" %}
+          </div>
+          <ul id="coming-reservations-list" class="list-group list-group-flush">
+            {% include "Reservation/sub_templates/coming_reservation_items.html" %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+  // ajax request to remove reservation asynchronously
+  function remove_reservation(str_id) {
+    var url = str_id+"/remove/";
+
+    // send ajax request
+    $.ajax({
+      url : url,
+      type : "POST",
+      data : null,
+      success : function(data) {
+        if (data['is_current']) {
+          if (data['html']) {
+            $('#current-reservations-list').html(data['html']);
+          }
+        }
+        else if (data['is_coming']) {
+          if (data['html']) {
+            $('#coming-reservations-list').html(data['html']);
+          }
+        }
+      },
+    });
+  }
+</script>
+{% endblock %}

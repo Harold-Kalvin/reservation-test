@@ -1,0 +1,221 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-06-27 23:49+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: .\reservation\forms.py:30
+msgid "'To date time' must be greater than 'from date time'."
+msgstr "La date de fin doit être postérieure à la date de début."
+
+#: .\reservation\forms.py:36
+msgid "'To date time' must be greater than the current time."
+msgstr "La date de fin doit être postérieure à la date courante."
+
+#: .\reservation\forms.py:48
+msgid "This resource is already reserved for this time range."
+msgstr "Cette ressource est déjà réservée pour cette time range."
+
+#: .\reservation\models.py:11 .\reservation\models.py:23
+msgid "Name"
+msgstr "Nom"
+
+#: .\reservation\models.py:14
+msgid "Resource type"
+msgstr "Type de resource"
+
+#: .\reservation\models.py:15
+msgid "Resource types"
+msgstr "Types de resource"
+
+#: .\reservation\models.py:25
+msgid "Localization"
+msgstr "Localisation"
+
+#: .\reservation\models.py:27
+msgid "Capacity"
+msgstr "Capacité"
+
+#: .\reservation\models.py:29
+msgid "The minimum value is 1."
+msgstr "La valeur minimum est 1."
+
+#: .\reservation\models.py:33 .\reservation\templates\reservation\home.html:20
+#: .\reservation\templates\reservation\sub_templates\coming_reservation_items.html:6
+#: .\reservation\templates\reservation\sub_templates\current_reservation_items.html:6
+msgid "Resource"
+msgstr "Ressource"
+
+#: .\reservation\models.py:34
+msgid "Resources"
+msgstr "Ressources"
+
+#: .\reservation\models.py:43 .\reservation\templates\reservation\home.html:22
+#: .\reservation\templates\reservation\sub_templates\coming_reservation_items.html:8
+#: .\reservation\templates\reservation\sub_templates\current_reservation_items.html:8
+msgid "From"
+msgstr "De"
+
+#: .\reservation\models.py:44 .\reservation\templates\reservation\home.html:23
+#: .\reservation\templates\reservation\sub_templates\coming_reservation_items.html:9
+#: .\reservation\templates\reservation\sub_templates\current_reservation_items.html:9
+msgid "To"
+msgstr "À"
+
+#: .\reservation\models.py:49 .\templates\base.html:15
+#: .\templates\base2.html:15
+msgid "Reservation"
+msgstr "Réservation"
+
+#: .\reservation\models.py:50
+msgid "Reservations"
+msgstr "Réservations"
+
+#: .\reservation\models.py:55
+#, python-format
+msgid "Reservation of \"%(res)s\" (%(from)s => %(to)s)"
+msgstr "Reservation de \"%(res)s\" (%(from)s => %(to)s)"
+
+#: .\reservation\templates\reservation\home.html:6 .\templates\base.html:36
+msgid "All reservations"
+msgstr "Toutes les réservations"
+
+#: .\reservation\templates\reservation\home.html:14
+msgid "Past reservations"
+msgstr "Réservations du passé"
+
+#: .\reservation\templates\reservation\home.html:21
+#: .\reservation\templates\reservation\sub_templates\coming_reservation_items.html:7
+#: .\reservation\templates\reservation\sub_templates\current_reservation_items.html:7
+msgid "Owner"
+msgstr "Propriétaire"
+
+#: .\reservation\templates\reservation\home.html:28
+msgid "No past reservations."
+msgstr "Pas de réservations du passé"
+
+#: .\reservation\templates\reservation\home.html:40
+msgid "Current reservations"
+msgstr "Réservations du moment"
+
+#: .\reservation\templates\reservation\home.html:53
+msgid "Coming reservations"
+msgstr "Réservations du futur"
+
+#: .\reservation\templates\reservation\reserve_form.html:3
+#: .\reservation\templates\reservation\reserve_form.html:6
+#: .\templates\base2.html:40
+msgid "Reserve"
+msgstr "Réserver"
+
+#: .\reservation\templates\reservation\reserve_form.html:3
+#: .\reservation\templates\reservation\reserve_form.html:6
+msgid "Edit"
+msgstr "Modifier"
+
+#: .\reservation\templates\reservation\reserve_form.html:29
+#: .\user\templates\user\profile_form.html:30
+msgid "Save changes"
+msgstr "Enregistrer les changements"
+
+#: .\reservation\templates\reservation\sub_templates\coming_reservation_items.html:12
+msgid "Update"
+msgstr "Modifier"
+
+#: .\reservation\templates\reservation\sub_templates\coming_reservation_items.html:13
+#: .\reservation\templates\reservation\sub_templates\current_reservation_items.html:11
+msgid "Cancel"
+msgstr "Annuler"
+
+#: .\reservation\templates\reservation\sub_templates\coming_reservation_items.html:19
+msgid "No coming reservations."
+msgstr "Pas de réservations du futur."
+
+#: .\reservation\templates\reservation\sub_templates\current_reservation_items.html:16
+msgid "No current reservations."
+msgstr "Pas de réservations du moment."
+
+#: .\reservation\views.py:35
+msgid "Reservation was not successful. See errors below."
+msgstr ""
+"La réservation n'a pas pu aboutir. Veuillez corriger les erreurs ci-dessous."
+
+#: .\reservation\views.py:46
+msgid "Reservation was successful."
+msgstr "La réservation est un succès."
+
+#: .\reservation_test\settings.py:127
+msgid "English"
+msgstr "Anglais"
+
+#: .\reservation_test\settings.py:128
+msgid "French"
+msgstr "Français"
+
+#: .\templates\base.html:26 .\templates\base2.html:26
+msgid "test"
+msgstr "test"
+
+#: .\templates\base.html:40
+msgid "Reserve a resource"
+msgstr "Réserver une ressource"
+
+#: .\templates\base.html:65 .\templates\base2.html:44
+#: .\user\templates\user\profile_form.html:3
+#: .\user\templates\user\profile_form.html:6
+msgid "Profile"
+msgstr "Profil"
+
+#: .\templates\base.html:69 .\templates\base2.html:67
+msgid "Logout"
+msgstr "Se déconnecter"
+
+#: .\templates\base2.html:36
+msgid "Your reservations"
+msgstr "Vos réservations"
+
+#: .\user\forms.py:12
+msgid "Username"
+msgstr "Nom d'utilisateur"
+
+#: .\user\forms.py:17
+msgid "Password"
+msgstr "Mot de passe"
+
+#: .\user\forms.py:36 .\user\models.py:11
+msgid "Timezone"
+msgstr "Fuseau horaire"
+
+#: .\user\templates\user\login_form.html:3
+#: .\user\templates\user\login_form.html:6
+#: .\user\templates\user\login_form.html:25
+msgid "Login"
+msgstr "Connexion"
+
+#: .\user\templates\user\login_form.html:11
+msgid "Your username and password didn't match. Please try again."
+msgstr ""
+"Votre nom d'utilisateur ne correspond pas à votre mot de passe. Veuillez "
+"recommencer."
+
+#: .\user\views.py:22
+msgid "Profile successfully updated."
+msgstr "Votre profil a été mis à jour."
+
+#: .\user\views.py:25
+msgid "Please correct the errors."
+msgstr "Veuillez corriger les erreurs."

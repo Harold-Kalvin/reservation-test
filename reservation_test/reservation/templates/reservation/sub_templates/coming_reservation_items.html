@@ -1,0 +1,21 @@
+{% load i18n %}
+{% if coming_reservations %}
+{% for coming_reservation in coming_reservations %}
+<li class="list-group-item d-flex justify-content-between align-items-center">
+  <div>
+    <span class="font-weight-bold">{% trans "Resource" %}: </span>{{ coming_reservation.resource.name }}<br>
+    <span class="font-weight-bold">{% trans "Owner" %}: </span>{{ coming_reservation.owner }}<br>
+    <span class="font-weight-bold">{% trans "From" %}: </span>{{ coming_reservation.from_date_time }}<br>
+    <span class="font-weight-bold">{% trans "To" %}: </span>{{ coming_reservation.to_date_time }}<br>
+  </div>
+  <div>
+    <a href="{% url 'reservation-update' coming_reservation.id %}" class="btn btn-outline-primary">{% trans "Update" %}</a>
+    <button type="button" class="btn btn-outline-danger" onclick="remove_reservation('{{ coming_reservation.id }}')">{% trans "Cancel" %}</button>
+  </div>
+</li>
+{% endfor %}
+{% else %}
+<li class="list-group-item d-flex justify-content-center align-items-center">
+    {% trans "No coming reservations." %}
+</li>
+{% endif %}

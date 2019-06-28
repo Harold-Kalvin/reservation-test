@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% if not object %}{% trans "Reserve" %}{% else %}{% trans "Edit" %}{% endif %}{% endblock %}
+
+{% block content %}
+<h1>{% if not object %}{% trans "Reserve" %}{% else %}{% trans "Edit" %}{% endif %}</h1>
+<form id="form-reserve" method="post">
+  {% csrf_token %}
+  <div id="form-reserve-error" class="container"></div>
+
+  <div class="form-group">
+    <label for="id_resource">{{ form.resource.label }}</label>
+    {{ form.resource }}
+    <div id="resource-error" class="text-danger"></div>
+  </div>
+
+  <div class="form-group">
+    <label for="id_from_date_time">{{ form.from_date_time.label }}</label>
+    {{ form.from_date_time }}
+    <div id="from-date-error" class="text-danger"></div>
+  </div>
+
+  <div class="form-group">
+    <label for="id_to_date_time">{{ form.to_date_time.label }}</label>
+    {{ form.to_date_time }}
+    <div id="to-date-error" class="text-danger"></div>
+  </div>
+
+  <button type="submit" class="btn btn-outline-primary">{% trans "Save changes" %}</button>
+</form>
+{% endblock %}
+
+{% block js %}
+{{ form.media }}
+
+{% if object %}
+<script>
+  var url = "{% url 'reservation-update' object.id %}";
+  var creating_new = false;
+</script>
+{% else %}
+<script>
+  var url = "{% url 'reservation-add' %}";
+  var creating_new = true;
+</script>
+{% endif %}
+
+<script>
+  // submit form
+  $('#form-reserve').on('submit', function(event){
+    event.preventDefault();
+    submit_reservation();
+  });
+
+  // ajax request to submit form asynchronously
+  function submit_reservation() {
+    // serialize form to send as data
+    var form_data = $('#form-reserve').serialize();
+    
+    // empty field errors containers
+    $('#form-reserve-error').html('');
+    $('#resource-error').html('');
+    $('#to-date-error').html('');
+    
+    // send ajax request
+    $.ajax({
+      url : url,
+      type : "POST",
+      data : form_data,
+      success : function(data) {
+        if (data['message']) {
+          // show success message
+          var alert = '<div class="alert alert-success">'+data['message']+'</div>';
+          $('#form-reserve-error').html(alert);
+          // reset form
+          if (creating_new) {
+            $('#id_resource').val('');
+            $('#id_from_date_time').val('');
+            $('#id_to_date_time').val('');
+          }
+        }
+      },
+      error : function(xhr,errmsg,err) {
+        // show all error messages
+        var data = xhr.responseJSON;
+        if (data['message']) {
+          var alert = '<div class="alert alert-danger">'+data['message']+'</div>';
+          $('#form-reserve-error').html(alert);
+        }
+        if (data['resource']) {
+          $('#resource-error').html(data['resource'][0]);
+        }
+        if (data['to_date_time']) {
+          $('#to-date-error').html(data['to_date_time'][0]);
+        }
+      }
+    });
+  };
+</script>
+{% endblock %}

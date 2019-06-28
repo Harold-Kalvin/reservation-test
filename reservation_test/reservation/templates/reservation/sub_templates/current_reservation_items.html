@@ -1,0 +1,18 @@
+{% load i18n %}
+{% if current_reservations %}
+{% for current_reservation in current_reservations %}
+<li class="list-group-item d-flex justify-content-between align-items-center">
+  <div>
+    <span class="font-weight-bold">{% trans "Resource" %}: </span>{{ current_reservation.resource.name }}<br>
+    <span class="font-weight-bold">{% trans "Owner" %}: </span>{{ current_reservation.owner }}<br>
+    <span class="font-weight-bold">{% trans "From" %}: </span>{{ current_reservation.from_date_time }}<br>
+    <span class="font-weight-bold">{% trans "To" %}: </span>{{ current_reservation.to_date_time }}<br>
+  </div>
+  <button type="button" class="btn btn-outline-danger" onclick="remove_reservation('{{ current_reservation.id }}')">{% trans "Cancel" %}</button>
+</li>
+{% endfor %}
+{% else %}
+<li class="list-group-item d-flex justify-content-center align-items-center">
+    {% trans "No current reservations." %}
+</li>
+{% endif %}
