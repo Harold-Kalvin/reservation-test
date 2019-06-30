@@ -21,9 +21,6 @@ class ReservationForm(forms.ModelForm):
         start = self.cleaned_data.get('from_date_time')
         end = self.cleaned_data.get('to_date_time')
         
-        print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
-        print(end)
-        print(start)
         # prevents from creating a "start date time" greater than "end date time"
         if end < start:
             raise ValidationError({'to_date_time': [
